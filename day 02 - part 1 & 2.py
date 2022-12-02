@@ -4,10 +4,9 @@ with open("Advent-of-Code-2022\day02.txt", "r") as file:
     win_lose_draw_points = {0 : 6, 1 : 0, 2: 3}
     lose_draw_win = {"X" : 1, "Y": 2, "Z" : 0}
     data = [x.split(" ") for x in file.read().splitlines()]
-    score = 0
-    score_two = 0
+    s, s2 = 0, 0
     for e, (x, y) in enumerate(data):
-        score += points[y] + win_lose_draw_points[guide[x].index(y)]
-        score_two += win_lose_draw_points[lose_draw_win[y]] + points[guide[x][lose_draw_win[y]]]
-    print(score)
-    print(score_two)
+        s += points[y] + win_lose_draw_points[guide[x].index(y)]
+        s2 += win_lose_draw_points[lose_draw_win[y]] + points[guide[x][lose_draw_win[y]]]
+    print(s)
+    print(s2)
