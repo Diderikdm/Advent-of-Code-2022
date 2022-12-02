@@ -1,4 +1,2 @@
-with open("Advent-of-Code-2022\day01.txt", "r") as file:
-    data = sorted(sum(int(y) for y in x.splitlines()) for x in file.read().split("\n\n"))
-    print(data[-1])
-    print(sum(data[-3:]))
+d=sorted(sum(map(int,x.splitlines()))for x in open("d","r").read().split("\n\n"));print(d[-1],sum(d[-3:]))
+print(len("""d=sorted(sum(map(int,x.splitlines()))for x in open("d","r").read().split("\n\n"));print(d[-1],sum(d[-3:]))"""))
