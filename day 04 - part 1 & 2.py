@@ -1,4 +1,4 @@
-with open("Advent-of-Code-2022\day 04.txt", "r") as file:
+with open("day 04.txt", "r") as file:
     data = file.read().splitlines()
     p1, p2 = 0, 0
     for row in data:
