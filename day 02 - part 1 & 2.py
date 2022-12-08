@@ -1,4 +1,4 @@
-with open("Advent-of-Code-2022\day 02.txt", "r") as file:
+with open("day 02.txt", "r") as file:
     guide = {"A" : ["Y", "Z", "X"], "B" : ["Z", "X", "Y"], "C" : ["X", "Y", "Z"]}
     points = {"X" : 1, "Y" : 2, "Z" : 3}
     win_lose_draw_points = {0 : 6, 1 : 0, 2: 3}
