@@ -1,4 +1,4 @@
-with open("Advent-of-Code-2022\day 03.txt", "r") as file:
+with open("day 03.txt", "r") as file:
     data = file.read().splitlines()
     points = {x : e + 1 for e, x in enumerate([chr(y) for y in range(97, 123)] + [chr(y) for y in range(65, 91)])}
     p1, p2 = 0, 0
