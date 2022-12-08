@@ -21,12 +21,9 @@ with open("day 08.txt", "r") as file:
                 s = 0
                 while True:
                     b, a = func(b, a)
-                    if 0 <= b < length and 0 <= a < width:
+                    if (c := 0 <= b < length and 0 <= a < width):
                         s += 1
-                        if int(data[b][a]) >= current:
-                            dirs.append(s)
-                            break
-                    else:
+                    if not c or int(data[b][a]) >= current:
                         dirs.append(s)
                         break
             p2 = max(p2, dirs[0] * dirs[1] * dirs[2] * dirs[3])
