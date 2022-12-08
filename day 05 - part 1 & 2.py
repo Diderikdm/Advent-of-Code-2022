@@ -1,4 +1,4 @@
-with open("Advent-of-Code-2022\day 05.txt", "r") as file:
+with open("day 05.txt", "r") as file:
     stack, data = file.read().split("\n\n")
     stack = stack.splitlines()[:-1][::-1]
     stack = [[x[e] for x in stack if x[e] != " "] for e in range(1, len(stack[0]), 4)]
