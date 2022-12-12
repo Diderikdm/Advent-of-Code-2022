@@ -12,8 +12,8 @@ def path_finder(grid, start, end, p2=False):
         steps, (x,y) = heappop(queue)
         if ((x,y) == end if not p2 else grid[x,y] == "a"):
             return steps
+        next_steps = steps + 1
         for a,b in ad(grid, x, y):
-            next_steps = steps + 1
             if (current := best_dict.get((a,b), None)) is not None:
                 if current <= next_steps:
                     continue
