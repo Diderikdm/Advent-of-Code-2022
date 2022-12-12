@@ -20,7 +20,6 @@ def path_finder(grid, start, end, p2=False):
             best_dict[a,b] = next_steps
             heappush(queue, [next_steps, (a,b)])
     
-
 with open("day_12.txt", "r") as file:
     data = file.read().splitlines()
     order = [chr(x) for x in range(97, 123)] + [chr(x) for x in range(65, 91)]
