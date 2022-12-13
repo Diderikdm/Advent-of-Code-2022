@@ -27,8 +27,7 @@ with open("day_13.txt", "r") as file:
         comp = compare(data[e][0][:], data[e][1][:])
         if comp:
             p1 += e + 1
-    two_extra, six_extra = ["[", "[", 2, "]", "]"], ["[", "[", 6, "]", "]"]
-    data = sum(data, []) + [two_extra, six_extra]
+    data = sum(data, []) + [(two_extra := ["[", "[", 2, "]", "]"]), (six_extra := ["[", "[", 6, "]", "]"])]
     sorted_data = [data[0]]
     for x in data[1:]:
         for e, y in enumerate(sorted_data):
