@@ -24,8 +24,7 @@ with open("day_13.txt", "r") as file:
     for e, packets in enumerate(data):
         for i, packet in enumerate(packets):
             data[e][i] = [int(x) if x.isdigit() else x for x in packet.split(",") if x]
-        comp = compare(data[e][0][:], data[e][1][:])
-        if comp:
+        if compare(data[e][0][:], data[e][1][:]):
             p1 += e + 1
     data = sum(data, []) + [(two_extra := ["[", "[", 2, "]", "]"]), (six_extra := ["[", "[", 6, "]", "]"])]
     sorted_data = [data[0]]
