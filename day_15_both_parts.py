@@ -1,8 +1,8 @@
-def line_intersect(Ax1, Ay1, Ax2, Ay2, Bx1, By1, Bx2, By2):
-    if (d := (By2 - By1) * (Ax2 - Ax1) - (Bx2 - Bx1) * (Ay2 - Ay1)):
-        if 0 <= (uA := ((Bx2 - Bx1) * (Ay1 - By1) - (By2 - By1) * (Ax1 - Bx1)) / d) <= 1 \
-        and 0 <= (uB := ((Ax2 - Ax1) * (Ay1 - By1) - (Ay2 - Ay1) * (Ax1 - Bx1)) / d) <= 1:
-            return int(Ax1 + uA * (Ax2 - Ax1)), int(Ay1 + uA * (Ay2 - Ay1))
+def line_intersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
+    if (d := (by2 - by1) * (ax2 - ax1) - (bx2 - bx1) * (ay2 - ay1)):
+        if 0 <= (ua := ((bx2 - bx1) * (ay1 - by1) - (by2 - by1) * (ax1 - bx1)) / d) <= 1 \
+        and 0 <= (ub := ((ax2 - ax1) * (ay1 - by1) - (ay2 - ay1) * (ax1 - bx1)) / d) <= 1:
+            return int(ax1 + ua * (ax2 - ax1)), int(ay1 + ua * (ay2 - ay1))
     
 def find(set_y):
     x_ranges = set()
