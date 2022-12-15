@@ -43,5 +43,8 @@ print(d13 - d12, "\n-------------")
 import day_14_both_parts
 d14 = datetime.now()
 print(d14 - d13, "\n-------------")
+import day_15_both_parts
+d15 = datetime.now()
+print(d15 - d14, "\n-------------")
 
 print("total: ", d14 - now) 
