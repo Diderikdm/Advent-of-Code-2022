@@ -27,7 +27,6 @@ with open("day_15.txt", "r") as file:
     data = [((z := [int(x.split(" ")[y].split("=")[1].strip(",").strip(":")) for y in [2, 3, -2, -1]])[:2], z[2:]) for x in file.read().splitlines()]
     beacons = set(tuple(x[1]) for x in data)
     p1 = find(set_y)
-    print(p1)
     for y in range(4000000):
         if (result := find(y, True)):
             break
