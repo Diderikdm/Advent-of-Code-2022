@@ -16,7 +16,7 @@ def find(set_y):
         if (man_y := abs(sensor[1] - set_y)) <= manhattan:
             x_ranges.add((sensor[0] - (man_x := manhattan - man_y), sensor[0] + man_x))
     start, end = min(x[0] for x in x_ranges), max(x[1] for x in x_ranges)
-    return m, wn, ws, ne, se, abs(start - end) + 1 - sum([x[1] == set_y for x in beacons])
+    return m, wn, ws, ne, se, abs(start - end) + 1 - sum(x[1] == set_y for x in beacons)
         
 with open("day_15.txt", "r") as file:
     set_y = 2000000
