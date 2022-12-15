@@ -5,7 +5,6 @@ def find(set_y, p2=False):
         if (man_y := abs(sensor[1] - set_y)) <= manhattan:
             x_ranges.add(tuple(sorted([sensor[0] - (man_x := manhattan - man_y), sensor[0] + man_x])))
     total_range = []
-    beacons_in_y = sum([x[1] == set_y for x in beacons])
     ranges = sorted(x_ranges)
     start, end = ranges[0]
     for x, y in ranges[1:]:
@@ -18,7 +17,7 @@ def find(set_y, p2=False):
     if (start, end) not in total_range:
         total_range.append((start, end))
     if not p2:
-        return sum(abs(x[1] - x[0]) + 1 for x in total_range) - beacons_in_y
+        return sum(abs(x[1] - x[0]) + 1 for x in total_range) - sum([x[1] == set_y for x in beacons])
     else:
         if len(total_range) > 1:
             return (total_range[0][1] + 1) * 4000000 + set_y
