@@ -4,7 +4,7 @@ def line_intersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
         and 0 <= (ub := ((ax2 - ax1) * (ay1 - by1) - (ay2 - ay1) * (ax1 - bx1)) / d) <= 1:
             return int(ax1 + ua * (ax2 - ax1)), int(ay1 + ua * (ay2 - ay1))
     
-def find(set_y):
+def find(set_y=2000000):
     x_ranges = set()
     m, wn, ws, ne, se = [], [], [], [], []
     for sensor, beacon in data:
@@ -19,10 +19,9 @@ def find(set_y):
     return m, wn, ws, ne, se, abs(start - end) + 1 - sum(x[1] == set_y for x in beacons)
         
 with open("day_15.txt", "r") as file:
-    set_y = 2000000
     data = [((z := [int(x.split(" ")[y].split("=")[1].strip(",").strip(":")) for y in [2, 3, -2, -1]])[:2], z[2:]) for x in file.read().splitlines()]
     beacons = set(tuple(x[1]) for x in data)
-    m, wn, ws, ne, se, p1 = find(set_y)
+    m, wn, ws, ne, se, p1 = find()
     points = set()
     p2 = None
     while not p2:
