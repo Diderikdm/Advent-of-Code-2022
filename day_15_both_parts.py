@@ -8,7 +8,7 @@ def find(set_y):
     x_ranges = set()
     m, wn, ws, ne, se = [], [], [], [], []
     for sensor, beacon in data:
-        manhattan = sum(abs(a - b) for a, b in zip(sensor, beacon))
+        m.append((manhattan := sum(abs(a - b) for a, b in zip(sensor, beacon))))
         wn.append(((w := (sensor[0] - manhattan - 1, sensor[1])), (n := (sensor[0], sensor[1] - manhattan - 1))))
         ws.append((w, (s := (sensor[0], sensor[1] + manhattan + 1))))
         ne.append((n, (e := (sensor[0] + manhattan + 1, sensor[1]))))
@@ -39,11 +39,10 @@ with open("day_15.txt", "r") as file:
     while not p2:
         for a, b in wn + se:
             for c, d in ws + ne:
-                if (hit := line_intersect(*a, *b, *c, *d)):
-                    if 0 <= hit[0] <= 4000000 and 0 <= hit[1] <= 4000000:
-                        for e, (sensor, beacon) in enumerate(data):
-                            if sum(abs(a - b) for a, b in zip(sensor, hit)) <= sum(abs(a - b) for a, b in zip(sensor, beacon)):
-                                break
-                        else:
-                            p2 = hit[0] * 4000000 + hit[1]
+                if (hit := line_intersect(*a, *b, *c, *d)) and 0 <= min(hit) and max(hit) <= 4000000:
+                    for e, (sensor, beacon) in enumerate(data):
+                        if sum(abs(a - b) for a, b in zip(sensor, hit)) <= m[e]:
+                            break
+                    else:
+                        p2 = hit[0] * 4000000 + hit[1]
     print("day 15: ", p1, p2)
