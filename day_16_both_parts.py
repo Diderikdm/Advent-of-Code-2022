@@ -1,4 +1,3 @@
-
 from heapq import heapify, heappop, heappush
 
 def find_distances(start, data, interesting, queue, paths):
