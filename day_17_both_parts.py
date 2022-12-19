@@ -35,10 +35,10 @@ with open("day_17.txt", "r") as file:
         if (rock_i, jet_e) not in seen:
             seen[rock_i, jet_e] = (current, mn, i)
         else:
-            if seen[(rock_i, jet_e)][0] != current:
+            if (p := seen[(rock_i, jet_e)])[0] != current:
                 seen[(rock_i, jet_e)] = (current, mn, i)
             else:
-                prev, prev_mn, prev_i = seen[(rock_i, jet_e)]
+                prev, prev_mn, prev_i = p
                 diff = i - prev_i
                 if not (1000000000000 - i) % diff:
                     p2 = (prev_mn - mn) * ((1000000000000 - i) // diff)
