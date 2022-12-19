@@ -1,16 +1,13 @@
 from heapq import heapify, heappop, heappush
 
 def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
-    t = 0
-    ore, clay, obsidian, geode = 0, 0, 0, 0
+    t, ore, clay, obsidian, geode = 0, 0, 0, 0, 0
     max_ore = max(x["o"] for x in [ore_robot, clay_robot, obsidian_robot, geode_robot])
     max_clay = max(x["c"] if "c" in x else 0 for x in [ore_robot, clay_robot, obsidian_robot, geode_robot])
     max_obsidian = max(x["ob"] if "ob" in x else 0 for x in [ore_robot, clay_robot, obsidian_robot, geode_robot])
     queue = [(t, ore, clay, obsidian, geode, ore_robot["a"], clay_robot["a"], obsidian_robot["a"], geode_robot["a"])]
     heapify(queue)
     best = set()
-    i = 0
-    seen = {}
     while queue:
         q = heappop(queue)
         t, ore, clay, obsidian, geode, ore_a, clay_a, obsidian_a, geode_a = q
@@ -18,8 +15,6 @@ def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
             l = min([geode_robot["ob"] // (obsidian_a or 1), geode_robot["o"] // (ore_a or 1)])
             if geode + (geode_a * (end - t)) + (l * ((end - t) // 2)) < max(best or [0]):
                 continue
-        if t > end:
-            return max(best)
         best.add(geode)
         ore_flag, clay_flag, obsidian_flag, geode_flag = 0, 0, 0, 0
         for t in range(t, end):
@@ -41,8 +36,7 @@ def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
             obsidian += obsidian_a
             geode += geode_a
     return max(best)
-
-    
+  
 with open("day_19.txt", "r") as file:
     data = {(z := [int(x) for x in y.split(" ") if x.isdigit()])[0] : [
         {"a" : 1, "o" : z[1]}, 
@@ -50,13 +44,9 @@ with open("day_19.txt", "r") as file:
         {"a" : 0, "o" : z[3], "c" : z[4]}, 
         {"a" : 0, "o" : z[5], "ob" : z[6]}
         ] for y in file.read().replace(":", " :").splitlines()}
-    best = {}
-    p1 = 0
-    p2 = 1
+    p1, p2 = 0, 1
     for blueprint, (ore_robot, clay_robot, obsidian_robot, geode_robot) in data.items():
         if blueprint < 4:
             p2 *= find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 32)
         p1 += blueprint * find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 24)
     print("day 19 :", p1, p2)
-
-
