@@ -15,10 +15,6 @@ def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
     while queue:
         q = heappop(queue)
         t, ore, clay, obsidian, geode, ore_a, clay_a, obsidian_a, geode_a = q
-        if (prev := seen.get((geode, ore_a, clay_a, obsidian_a, geode_a, t), None)) is not None:
-            if prev[0] >= ore and prev[1] >= clay and prev[2] >= obsidian and prev[3] >= geode:
-                continue
-            seen[(ore_a, clay_a, obsidian_a, geode_a)] = ore, clay, obsidian, geode
         if i != t:
             i = t
             print(i, len(queue))
