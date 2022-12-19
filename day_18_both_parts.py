@@ -8,12 +8,9 @@ with open("day_18.txt", "r") as file:
         for side in adj(seen, *drop):
             if side not in data:
                 p1 += 1
-    min_x = min(x[0] - 1 for x in data)
-    max_x = max(x[0] + 1 for x in data)
-    min_y = min(x[1] - 1 for x in data)
-    max_y = max(x[1] + 1 for x in data)
-    min_z = min(x[2] - 1 for x in data)
-    max_z = max(x[2] + 1 for x in data)
+    min_x, max_x = (x := sorted(x[0] for x in data))[0] - 1, x[-1] + 1
+    min_y, max_y = (y := sorted(x[1] for x in data))[0] - 1, y[-1] + 1
+    min_z, max_z = (z := sorted(x[2] for x in data))[0] - 1, y[-1] + 1
     queue = [(min_x, min_y, min_z)]
     p2 = 0
     while queue:
