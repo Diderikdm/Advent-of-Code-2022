@@ -25,28 +25,16 @@ def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
         for t in range(t, end + 1):
             best.add(geode)
             if not ore_flag and ore >= (o := ore_robot["o"]) and ore_a < max_ore:
-                next_ore = ore - o
-                next_ore += ore_a
-                heappush(queue, (t + 1, next_ore, clay + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a + 1, clay_a, obsidian_a, geode_a))
+                heappush(queue, (t + 1, ore - o + ore_a, clay + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a + 1, clay_a, obsidian_a, geode_a))
                 ore_flag = 1
             if not clay_flag and ore >= (o := clay_robot["o"]) and clay_a < max_clay:
-                next_ore = ore - o
-                next_ore += ore_a
-                heappush(queue, (t + 1, next_ore, clay + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a, clay_a + 1, obsidian_a, geode_a))
+                heappush(queue, (t + 1, ore - o + ore_a, clay + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a, clay_a + 1, obsidian_a, geode_a))
                 clay_flag = 1
             if not obsidian_flag and ore >= (o := obsidian_robot["o"]) and clay >= (c := obsidian_robot["c"]) and obsidian_a < max_obsidian:
-                next_ore = ore - o
-                next_ore += ore_a
-                next_clay = clay - c
-                next_clay += clay_a
-                heappush(queue, (t + 1, next_ore, next_clay, obsidian + obsidian_a, geode + geode_a, ore_a, clay_a, obsidian_a + 1, geode_a))
+                heappush(queue, (t + 1, ore - o + ore_a, clay - c + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a, clay_a, obsidian_a + 1, geode_a))
                 obsidian_flag = 1
             if not geode_flag and ore >= (o := geode_robot["o"]) and obsidian >= (ob := geode_robot["ob"]):
-                next_ore = ore - o
-                next_ore += ore_a
-                next_obsidian = obsidian - ob
-                next_obsidian += obsidian_a
-                heappush(queue, (t + 1, next_ore, clay + clay_a, next_obsidian, geode + geode_a, ore_a, clay_a, obsidian_a, geode_a + 1))
+                heappush(queue, (t + 1, ore - o + ore_a, clay + clay_a, obsidian - ob + obsidian_a, geode + geode_a, ore_a, clay_a, obsidian_a, geode_a + 1))
                 geode_flag = 1
             ore += ore_a
             clay += clay_a
@@ -66,7 +54,7 @@ with open("day_19.txt", "r") as file:
     p1 = 0
     p2 = 1
     for blueprint, (ore_robot, clay_robot, obsidian_robot, geode_robot) in data.items():
-        if blueprint < 4:
+        if blueprint < 0:
             p2 *= find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 32)
         p1 += blueprint * find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 24)
     print("day 19 :", p1, p2)
