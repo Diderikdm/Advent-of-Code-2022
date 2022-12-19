@@ -22,14 +22,16 @@ def path_finder(data, distances, queue, part1=False, end=None):
         if time == end + 1:
             break
         (time, valve), (time2, valve2) = (p1, p2) if part1 else sorted([p1, p2])
-        for k, v in distances[valve].items():
-            if k not in seen and (next_time := time + v + 1) <= end:
-                next_release = release - (end - next_time) * data[k][0]
-                next_seen = sorted(seen + [k])
-                tup_seen = tuple(next_seen + [k])
-                if not tup_seen in best or best[tup_seen] > next_release:
-                    best[tup_seen] = next_release
-                    heappush(queue, [next_time, next_release, (next_time, k), (time2, valve2), next_seen])
+        if best.get((tup_seen := tuple(seen + [valve])), 1) > release:
+            best[tup_seen] = release
+            for k, v in distances[valve].items():
+                if k not in seen and (next_time := time + v + 1) <= end:
+                    next_release = release - (end - next_time) * data[k][0]
+                    next_seen = sorted(seen + [k])
+                    tup_seen = tuple(next_seen + [k])
+                    if best.get(tup_seen, 1) > release:
+                        best[tup_seen] = release
+                        heappush(queue, [next_time, next_release, (next_time, k), (time2, valve2), next_seen])
     return -min(best.values())
 
 with open("day_16.txt", "r") as file:
