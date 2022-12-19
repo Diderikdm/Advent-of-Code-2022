@@ -1,7 +1,6 @@
 from heapq import heapify, heappop, heappush
 
 def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
-    print(blueprint, (ore_robot, clay_robot, obsidian_robot, geode_robot))
     t = 0
     ore, clay, obsidian, geode = 0, 0, 0, 0
     max_ore = max(x["o"] for x in [ore_robot, clay_robot, obsidian_robot, geode_robot])
@@ -15,14 +14,15 @@ def find_best(ore_robot, clay_robot, obsidian_robot, geode_robot, end):
     while queue:
         q = heappop(queue)
         t, ore, clay, obsidian, geode, ore_a, clay_a, obsidian_a, geode_a = q
-        if i != t:
-            i = t
-            print(i, len(queue))
+        if t > end - 10:
+            l = min([geode_robot["ob"] // (obsidian_a or 1), geode_robot["o"] // (ore_a or 1)])
+            if geode + (geode_a * (end - t)) + (l * ((end - t) // 2)) < max(best or [0]):
+                continue
         if t > end:
             return max(best)
         best.add(geode)
         ore_flag, clay_flag, obsidian_flag, geode_flag = 0, 0, 0, 0
-        for t in range(t, end + 1):
+        for t in range(t, end):
             best.add(geode)
             if not ore_flag and ore >= (o := ore_robot["o"]) and ore_a < max_ore:
                 heappush(queue, (t + 1, ore - o + ore_a, clay + clay_a, obsidian + obsidian_a, geode + geode_a, ore_a + 1, clay_a, obsidian_a, geode_a))
@@ -54,7 +54,7 @@ with open("day_19.txt", "r") as file:
     p1 = 0
     p2 = 1
     for blueprint, (ore_robot, clay_robot, obsidian_robot, geode_robot) in data.items():
-        if blueprint < 0:
+        if blueprint < 4:
             p2 *= find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 32)
         p1 += blueprint * find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 24)
     print("day 19 :", p1, p2)
