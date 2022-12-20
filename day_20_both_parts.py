@@ -11,4 +11,4 @@ def find(data, shuffle, y, z):
 with open("day_20.txt", "r") as file:
     p1 = list(enumerate(int(x) for x in file.read().splitlines()))
     p2 = [(x[0], x[1] * 811589153) for x in p1]
-    print(find(p1, p1[:], len(p1) - 1, 1), find(p2, p2[:], len(p2) - 1, 10))
+    print("day 20 :", find(p1, p1[:], len(p1) - 1, 1), find(p2, p2[:], len(p2) - 1, 10))
