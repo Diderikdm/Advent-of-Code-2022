@@ -1,11 +1,8 @@
 def find(data, shuffle, y, z):
     for _ in range(z):
         for x in data:
-            if x[1] == 0:
-                zero = x
-            shuffle.pop(i := shuffle.index(x))
-            shuffle.insert((i + x[1]) % y, x)
-    zero = shuffle.index(zero)
+            shuffle.insert(((i := shuffle.index(x)) + x[1]) % y, shuffle.pop(i))
+    zero = next((e for e, x in enumerate(shuffle) if x[1] == 0))
     return sum(shuffle[zero + (x * 1000)][1] for x in [1, 2, 3])
     
 with open("day_20.txt", "r") as file:
