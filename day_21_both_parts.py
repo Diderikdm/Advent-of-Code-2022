@@ -34,4 +34,4 @@ with open("day_21.txt", "r") as file:
     
     steps_per_increase = diff_relevant_end_and_start / diff_end_and_start_values
 
-    print("day 21: ", p1, round(diff_start_values / steps_per_increase))
+    print("day 21: ", p1, round(diff_start_values / steps_per_increase) + start_value)
