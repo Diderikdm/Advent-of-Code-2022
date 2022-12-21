@@ -33,4 +33,4 @@ with open("day_15.txt", "r") as file:
                             break
                     else:
                         p2 = hit[0] * 4000000 + hit[1]
-    print("day 15: ", p1, p2)
+    print("Day 15: ", p1, p2)

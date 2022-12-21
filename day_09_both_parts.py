@@ -22,4 +22,4 @@ with open("day_09.txt", "r") as file:
                         y //= abs(y or 1)
                         lst[e] = (lst[e][0] + x, lst[e][1] + y)
                     prev_lst[e].add(lst[e])
-    print("day 9: ", len(prev_lst[1]), len(prev_lst[9]))
+    print("Day 9: ", len(prev_lst[1]), len(prev_lst[9]))

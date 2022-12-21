@@ -16,4 +16,4 @@ with open("day_10.txt", "r") as file:
             sprite = [reg_x - 1, reg_x, reg_x + 1]
             add_flag = 0
         c += 1
-    print("day 10: ", p1, "\n", '\n'.join([image[x:x + 40] for x in range(0, len(image), 40)]))     
+    print("Day 10: ", p1, "\n", '\n'.join([image[x:x + 40] for x in range(0, len(image), 40)]))     

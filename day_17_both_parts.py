@@ -44,5 +44,5 @@ with open("day_17.txt", "r") as file:
                     p2 = (prev_mn - mn) * ((1000000000000 - i) // diff)
         i += 1
         vert = min(sum(grid.values(), [])) - 4
-    print("day 17 :", p1, p2)
+    print("Day 17 :", p1, p2)
     

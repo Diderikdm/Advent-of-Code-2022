@@ -35,4 +35,4 @@ with open("day_13.txt", "r") as file:
                 break
         else:
             sorted_data.append(x)
-    print("day 13: ", p1, (sorted_data.index(two_extra) + 1) * (sorted_data.index(six_extra) + 1))
+    print("Day 13: ", p1, (sorted_data.index(two_extra) + 1) * (sorted_data.index(six_extra) + 1))

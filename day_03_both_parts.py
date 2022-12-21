@@ -10,4 +10,4 @@ with open("day_03.txt", "r") as file:
         badge &= set(x)
         if e % 3 == 2:
             p2 += points[next(iter(badge))]
-    print("day 3: ", p1, p2)
+    print("Day 3: ", p1, p2)

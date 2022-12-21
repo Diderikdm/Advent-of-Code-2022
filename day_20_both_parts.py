@@ -6,4 +6,4 @@ def find(data, shuffle, y, zero = None):
 with open("day_20.txt", "r") as file:
     p1 = list(enumerate(int(x) for x in file.read().splitlines()))
     p2 = [(x[0], x[1] * 811589153) for x in p1]
-    print("day 20 :", find(p1, p1[:], len(p1) - 1), find(p2 * 10, p2[:], len(p2) - 1))
+    print("Day 20 :", find(p1, p1[:], len(p1) - 1), find(p2 * 10, p2[:], len(p2) - 1))

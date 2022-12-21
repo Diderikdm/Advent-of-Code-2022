@@ -49,4 +49,4 @@ with open("day_19.txt", "r") as file:
         if blueprint < 4:
             p2 *= find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 32)
         p1 += blueprint * find_best({**ore_robot}, {**clay_robot}, {**obsidian_robot}, {**geode_robot}, 24)
-    print("day 19 :", p1, p2)
+    print("Day 19 :", p1, p2)

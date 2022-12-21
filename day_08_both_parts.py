@@ -27,4 +27,4 @@ with open("day_08.txt", "r") as file:
                         dirs.append(s)
                         break
             p2 = max(p2, dirs[0] * dirs[1] * dirs[2] * dirs[3])
-    print("day 8: ", p1, p2)
+    print("Day 8: ", p1, p2)

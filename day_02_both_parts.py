@@ -8,4 +8,4 @@ with open("day_02.txt", "r") as file:
     for e, (x, y) in enumerate(data):
         p1 += points[y] + win_lose_draw_points[guide[x].index(y)]
         p2 += win_lose_draw_points[lose_draw_win[y]] + points[guide[x][lose_draw_win[y]]]
-    print("day 2: ", p1, p2)
+    print("Day 2: ", p1, p2)

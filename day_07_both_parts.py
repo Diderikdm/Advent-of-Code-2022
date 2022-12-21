@@ -30,6 +30,6 @@ with open("day_07.txt", "r") as file:
     total_space = {}
     find_total_space_per_dir(directories, key="/")
     needed_space = 70000000 - max(total_space.values())
-    print("day 7: ", sum(v for v in total_space.values() if v <= 100000), min([v for v in total_space.values() if v > 30000000 - needed_space]))
+    print("Day 7: ", sum(v for v in total_space.values() if v <= 100000), min([v for v in total_space.values() if v > 30000000 - needed_space]))
 
 

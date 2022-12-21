@@ -11,4 +11,4 @@ with open("day_04.txt", "r") as file:
             p1 += 1
         if set(rng[0]) & set(rng[1]):
             p2 += 1
-    print("day 4: ", p1, p2)
+    print("Day 4: ", p1, p2)

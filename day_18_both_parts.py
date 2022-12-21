@@ -23,4 +23,4 @@ with open("day_18.txt", "r") as file:
                         p2 += 1
                     else:
                         queue.append((next_x, next_y, next_z))
-    print("day 18 : ", p1, p2)
+    print("Day 18 : ", p1, p2)

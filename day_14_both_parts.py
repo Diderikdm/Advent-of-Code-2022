@@ -34,4 +34,4 @@ with open("day_14.txt", "r") as file:
     grid = defaultdict(lambda: [mx], grid)
     for x in range(500 - mx - 1, 500 + mx + 2):
         grid[x].append(mx)
-    print("day 14: ", fall({k : sorted(set(v)) for k, v in grid.items()}, (500, 0), [(500, 0)], mx))
+    print("Day 14: ", fall({k : sorted(set(v)) for k, v in grid.items()}, (500, 0), [(500, 0)], mx))

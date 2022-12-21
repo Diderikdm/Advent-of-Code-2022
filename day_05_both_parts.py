@@ -10,4 +10,4 @@ with open("day_05.txt", "r") as file:
             p1[y - 1].append(p1[x - 1].pop(-1))
         for z in range(e, 0, -1):
             p2[y - 1].append(p2[x - 1].pop(-z))
-    print("day 5: ", ''.join([x[-1] for x in p1]), ''.join([x[-1] for x in p2]))
+    print("Day 5: ", ''.join([x[-1] for x in p1]), ''.join([x[-1] for x in p2]))
