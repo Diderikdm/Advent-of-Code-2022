@@ -1,17 +1,17 @@
-ops = {"+" : int.__add__, "-" : int.__sub__, "*" : int.__mul__, "/" : int.__floordiv__, "=" : int.__eq__}
+ops = {"+" : float.__add__, "-" : float.__sub__, "*" : float.__mul__, "/" : float.__truediv__, "=" : float.__eq__}
 
 with open("day_21.txt", "r") as file:
     data = [x.replace(":", "").split(" ") for x in file.read().splitlines()]
     monkeys = {}
     for monkey in data:
         if len(monkey) == 2:
-            monkeys[monkey[0]] = lambda x=monkey[1]: int(x)
+            monkeys[monkey[0]] = lambda x=monkey[1]: float(x)
         else:
             monkeys[monkey[0]] = lambda x=monkey[2], y=monkey[1], z=monkey[3]: ops[x](monkeys[y](), monkeys[z]())
             if monkey[0] == "root":
                 a, b = monkey[1], monkey[3]
 
-    p1 = monkeys["root"]()
+    p1 = round(monkeys["root"]())
 
     start_x = monkeys[a]()
     start_y = monkeys[b]()
@@ -19,7 +19,7 @@ with open("day_21.txt", "r") as file:
     start_value = monkeys["humn"]()
     end_value = max([start_x, start_y]) ** 2
 
-    monkeys["humn"] = lambda x=end_value: int(x)
+    monkeys["humn"] = lambda x=end_value: float(x)
 
     end_x = monkeys[a]()
     end_y = monkeys[b]()
@@ -34,4 +34,4 @@ with open("day_21.txt", "r") as file:
     
     steps_per_increase = diff_relevant_end_and_start / diff_end_and_start_values
 
-    print("day 21: ", p1, round(diff_start_values / steps_per_increase) + start_value)
+    print("day 21: ", p1, round(diff_start_values / steps_per_increase + start_value))
