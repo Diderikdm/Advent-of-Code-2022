@@ -21,9 +21,8 @@ directions = [
 with open("Day_23.txt", "r") as file:
     data = file.read().splitlines()
     elves = set((x, y) for x in range(len(data[0])) for y in range(len(data)) if data[y][x] == "#")
-    direction = -1
-    i = 0
-    while True:
+    direction, i, copy = -1, 0, None
+    while elves != copy:
         copy = set(elves)
         direction = (direction + 1) % 4
         proposed_moves = defaultdict(list)
@@ -39,7 +38,5 @@ with open("Day_23.txt", "r") as file:
                 elves.add(move)
         if i == 9:
             p1 = (max(x[0] for x in elves) + 1 - min(x[0] for x in elves)) * (max(x[1] for x in elves) + 1 - min(x[1] for x in elves)) - len(elves)
-        elif elves == copy:
-            break
         i += 1
-    print("Day 23: ", p1, i + 1)
+    print("Day 23: ", p1, i)
