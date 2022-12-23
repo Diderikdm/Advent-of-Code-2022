@@ -2,7 +2,7 @@ directions = {
     0 : lambda g, d, s, j, x, y : (d, z) if (z := (x + 1, y)) in g else (j[divmod(z[0], s), z[1] // s](s, x, y) if j else (d, min(g, key=lambda a: (abs(a[1] - y), a[0])))),
     1 : lambda g, d, s, j, x, y : (d, z) if (z := (x, y + 1)) in g else (j[z[0] // s, divmod(z[1], s)](s, x, y) if j else (d, min(g, key=lambda a: (abs(a[0] - x), a[1])))),
     2 : lambda g, d, s, j, x, y : (d, z) if (z := (x - 1, y)) in g else (j[divmod(z[0], s), z[1] // s](s, x, y) if j else (d, min(g, key=lambda a: (abs(a[1] - y), -a[0])))),
-    3 : lambda g, d, s, j, x, y : (d, z) if (z := (x, y - 1)) in g else (j[z[0] // s, divmod(z[1], s)](s, x, y) if j else (d, min(g, key=lambda a: (abs(a[0] - x), -a[1])))),
+    3 : lambda g, d, s, j, x, y : (d, z) if (z := (x, y - 1)) in g else (j[z[0] // s, divmod(z[1], s)](s, x, y) if j else (d, min(g, key=lambda a: (abs(a[0] - x), -a[1]))))
 }
 
 get_jumps = lambda size : {
