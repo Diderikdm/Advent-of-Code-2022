@@ -81,5 +81,8 @@ print("Runtime: ", d23 - d22, "\n" + times[22], "\n-------------")
 import day_24_both_parts
 d24 = datetime.now()
 print("Runtime: ", d24 - d23, "\n" + times[22], "\n-------------")
+import day_25_both_parts
+d25 = datetime.now()
+print("Runtime: ", d25 - d24, "\n" + times[22], "\n-------------")
 
-print("Total runtime:", d24 - now, "\n-------------") 
+print("Total runtime:", d25 - now, "\n-------------") 
